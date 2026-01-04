@@ -8,3 +8,4 @@ vim.keymap.set("n", "<leader>ot", function()
 end, { desc = "Overseer toggle" })
 
 vim.keymap.set("n", "<leader>or", ":OverseerRun<CR>", { desc = "Overseer run tasks" })
+vim.keymap.set("n", "<leader>fo", ":Oil<CR>", { desc = "Open Oil" })
