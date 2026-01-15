@@ -6,8 +6,7 @@ return {
   },
   config = function()
     local mason_path = vim.fn.stdpath("data") .. "/mason/"
-
-    require("sonarlint").setup({
+    local setup = {
       server = {
         cmd = {
           "sonarlint-language-server",
@@ -27,6 +26,7 @@ return {
         "js",
         "ts",
       },
-    })
+    }
+    require("sonarlint").setup(setup)
   end,
 }

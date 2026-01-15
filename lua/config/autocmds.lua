@@ -14,3 +14,26 @@ vim.api.nvim_create_autocmd("User", {
     end
   end,
 })
+
+local root_dir = function()
+  if vim.bo.filetype == "java" then
+    local path = vim.api.nvim_buf_get_name(0)
+    if path == "" then
+      return nil
+    end
+    local markers = { "pom.xml", "application.properties", ".mvnw", ".gradlew" }
+    return vim.fs.root(path, markers)
+  else
+    return nil
+  end
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local rd = root_dir()
+    if client and client.name == "sonarlint.nvim" and rd then
+      client.root_dir = rd
+    end
+  end,
+})
