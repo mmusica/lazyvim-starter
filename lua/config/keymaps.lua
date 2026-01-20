@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local overseer = require("overseer")
-local qfixjava = require("dev.qfixjava")
+local qfixjava = require("plugin.qfixjava")
 
 vim.keymap.set("n", "<leader>ot", function()
   overseer.toggle()
